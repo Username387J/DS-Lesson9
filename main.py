@@ -23,8 +23,10 @@ print(df.describe())
 
 # 11. Display all flowers belonging to the setosa species.
 setosas=df[df["species"]=="setosa"]
+print("Setosas")
 print(setosas)
 # 12. Display flowers whose petal length is greater than 5.
+
 petal5=df[df["petal_length"]>5]
 print(petal5)
 # 13. Find flowers whose sepal width is less than 3.
@@ -38,18 +40,31 @@ print(petalmore4)
 petalmore1=df[df["petal_width"]>1]
 print(petalmore1)
 # 15. Find all flowers whose sepal length is between 5 and 6.
-sepal56=df[df["sepal_length"]> 5 and df["sepal_length"]<6]
+sepal56=df[(df["sepal_length"]>= 5) & (df["sepal_length"]<=6)]
 print(sepal56) 
-# 16. Sort the dataset by petal length in ascending order.
-# 17. Sort the dataset by sepal width in descending order.
-# 18. Display only the sepal_length, petal_length, and species columns.
-# 19. Find the first 10 flowers with the largest petal width.
-# 20. Display all flowers except those belonging to the setosa species.
 
+# 16. Sort the dataset by petal length in ascending order.
+petalSorted= df.sort_values(by= "petal_length", ascending=True)
+# 17. Sort the dataset by sepal width in descending order.
+sepalWidth= df.sort_values(by= "sepal_width", ascending=False)
+# 18. Display only the sepal_length, petal_length, and species columns.
+print(df[["sepal_length","petal_length","species"]])
+# 19. Find the first 10 flowers with the largest petal width.
+largestWidth=df.sort_values(by="petal_width", ascending=False)
+print(largestWidth.head(10))
+# 20. Display all flowers except those belonging to the setosa species.
+nosetosa=df[df["species"] !="setosa"]
+print(nosetosa)
 # Focus: Mean, median, maximum, minimum, and aggregation.
 # 21. Calculate the average sepal length.
+avgSepalLength=df["sepal_length"].mean()
+print(avgSepalLength)
 # 22. Find the maximum and minimum petal length.
+maxPetalLength=df["petal_length"].max()
+minPetalLength=df["petal_length"].min()
+#print("Max petal length is", maxPetalLength,", and minimum petal length is", minPetalLength)
 # 23. Calculate the average petal width.
+print(df["petal_width"].mean())
 # 24. Find the median sepal width.
 # 25. Calculate the standard deviation of petal length.
 # 26. Find the total number of flowers belonging to each species.
